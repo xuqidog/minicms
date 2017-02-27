@@ -5,9 +5,13 @@
 {% endblock title %}
  
  
-{% block content %}
-<h1>文章标题： {{ article.title }}</h1>
-<div id="main">
-    {{ article.content }}
-</div>
-{% endblock content %}
+ {% block content %}
+ <div style="margin-right: 100px; margin-left: 100px; margin-top: 40px;">
+ 	
+	<h1>文章标题： {{ article.title }}</h1>
+	<div id="main" style="background-color: rgb(244,244,244);padding: 40px">
+	    {{ article.content|safe }}
+	</div>
+	
+ </div>
+ {% endblock content %}
