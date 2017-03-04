@@ -1,85 +1,93 @@
 <!DOCTYPE html>
-<html>
-  <head>
+{% load staticfiles %}
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>{% block title %} 首页 {% endblock title %}</title>
+    <!-- Meta -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}欢迎光临{% endblock title %} - 自强学堂</title>
-   
-    <!-- Bootstrap -->
-    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-   
-    <!-- 引入下面两个库让 IE8 支持 HTML5 元素 -->
-    <!-- 警告: Respond.js 通过 file:// 浏览的时候不能正常工作！-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Responsive HTML5 Website Landing Page for Developers">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">  
+    <!-- <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'> -->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>  -->
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}">   
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/font-awesome/css/font-awesome.css' %}">
+    
+    <!-- github calendar css -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/github-calendar/dist/github-calendar.css' %}"
+/>
+    <!-- github acitivity css -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/github-activity/src/github-activity.css' %}">
+    <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css"> -->
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
-      <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style type="text/css">
-    body {
-        padding-top: 100px;
-    }
-    </style>
-    {% block css %}
-         
-    {% endblock css %}
+    
+</head> 
+
+<body>
+    <!-- ******HEADER****** --> 
+    <header class="header">
+        <div class="container">                       
+            <img class="profile-image img-responsive pull-left" src="{% static 'assets/images/profile.png' %}" alt="James Lee" />
+            <div class="profile-content pull-left">
+                <h1 class="name">简单</h1>
+                <h2 class="desc">The whole stack engineer</h2>   
+                <ul class="social list-inline">
+                    <li><a href="#"><i class="fa fa-eye"></i></a></li>                   
+                    <li><a href="#"><i class="fa fa-qq"></i></a></li>
+                    <li><a href="https://github.com/xuqidog"><i class="fa fa-github-alt"></i></a></li>                                  
+                </ul> 
+            </div><!--//profile-->
+            <a class="btn btn-cta-primary pull-right" href="http://themes.3rdwavemedia.com/" target="_blank"><i class="fa fa-paper-plane"></i> Contact Me</a>              
+        </div><!--//container-->
+    </header><!--//header-->
+    
+    
+
+    {% block content %}
+
+    {% endblock content %}
+
+
+
+
+
+
+    
+    <!-- ******FOOTER****** --> 
+    <footer class="footer">
+        <div class="container text-center">
+                <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can check out other license options via our website: themes.3rdwavemedia.com */-->
+                <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="#" target="_blank">Xu qi dong</a> for developers</small>
+                <!-- <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small> -->
+        </div><!--//container-->
+    </footer><!--//footer-->
  
-    {% block js %}
-         
-    {% endblock js %}
-  </head>
-  <body>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div>
-      <div>
-         <button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
-         <span>Toggle navigation</span>
-         <span></span>
-         <span></span>
-         <span></span>
-         </button> 
-         <span><a href="/">自强学堂</a></span>
-      </div>
- 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          {% for column in nav_display_columns %}
-              <li><a href="{{ column.get_absolute_url }}">{{ column.name }}</a></li>
-          {% endfor %}
-        </ul>
-    </div>
-    </nav>
- 
-    <div class="row clearfix">
-        <div>
-            {% block content %}
-                <h1>自强 新闻网</h1>
-            {% endblock content %}
-        </div>
-    </div>
- 
-    <div class="row clearfix" style="padding-top: 20px;margin-right: 100px; margin-left: 100px; margin-top: 40px;>
-      <div>
-       <div class="well well-sm">
-        <div style="text-align:center;">
-         <a href="/aboutus/disclaimer.html">免责声明</a> |
-         <a href="/aboutus/index.html">关于我们</a>
-        </div> 
-        <div>
-         自强学堂为非盈利站点，提供的内容仅用于学习和培训，我们不能保证内容一定正确。通过使用本站进行学习随之而来的风险与本站无关。当使用本站时，代表您已接受了本站的使用条款和隐私条款。 版权所有，保留一切权利。自强学堂的所有内容仅供测试，是以学习知识和分享知识为目的，对任何法律问题及风险不承担任何责任。
-        </div>
-        <div style="padding-top:10px; text-align: center">
-          自强学堂是用<a href="https://www.djangoproject.com/" target="_blank" rel="nofollow">Django</a>技术开发的站点，托管在<a href="http://bce.baidu.com/" target="_blank" rel="nofollow">百度开放云</a>平台<br>
- 
-          Copyright &copy; 2014 Powered by 自强学堂 All Rights Reserved.
-         <a href="http://www.miitbeian.gov.cn/" rel="nofollow" target="_blank">吉ICP备13002477号-1</a>
-        </div>
-       </div>
-      </div>
-    </div>
-   
-    <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    {% include "baidutongji.html" %}
-  </body>
-</html>
+    <!-- Javascript -->          
+    <script type="text/javascript" src="{% static 'assets/plugins/jquery-1.11.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>    
+    <script type="text/javascript" src="{% static 'assets/plugins/jquery-rss/dist/jquery.rss.min.js' %}"></script> 
+    <!-- github calendar plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/3.0.2/es6-promise.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fetch/0.10.1/fetch.min.js"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/github-calendar/dist/github-calendar.min.js' %}"></script>
+    <!-- github activity plugin -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/github-activity/src/github-activity.js' %}"></script>
+    <!-- custom js -->
+    <script type="text/javascript" src="{% static 'assets/js/main.js' %}"></script>            
+</body>
+</html> 
+

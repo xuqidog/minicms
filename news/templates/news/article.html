@@ -1,15 +1,16 @@
 {% extends "base.html" %}
  
-{% block title %}
-{{ article.title }}
-{% endblock title %}
  
+ {% block title %} 
+ {{ article.title }}
+ {% endblock title %}
  
  {% block content %}
  <div style="margin-right: 100px; margin-left: 100px; margin-top: 40px;">
  	
-	<h1>文章标题： {{ article.title }}</h1>
-	<div id="main" style="background-color: rgb(244,244,244);padding: 40px">
+	<h1>{{ article.title }} <small>{{ article.update_time }}</small> </h1>
+	<br/>
+	<div id="main" style="background-color: rgb(244,244,244);padding-top: 80px;padding-left: 40px;padding-right: 40px;padding-bottom: 80px;">
 	    {{ article.content|safe }}
 	</div>
 	

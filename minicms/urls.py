@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from DjangoUeditor import urls as DjangoUeditor_urls
 from news.views import article_detail, column_detail, index
+from django.conf import settings
+from django.views.static import serve
 
 urlpatterns = [
     url(r'^$', index, name='index'),
@@ -25,7 +27,16 @@ urlpatterns = [
     url(r'^news/(?P<pk>\d+)/(?P<article_slug>[^/]+)/$', article_detail, name='article'),
     url(r'^ueditor/',include(DjangoUeditor_urls)),
     url(r'^admin/', admin.site.urls),
+    url(r'^static/(?P<path>.*)$', serve,{ 'document_root': settings.STATIC_URL}), 
 ]
+
+
+from django.contrib.staticfiles import views
+
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^static/(?P<path>.*)$', views.serve),
+    ]
 
 
 # use Django server /media/ files
